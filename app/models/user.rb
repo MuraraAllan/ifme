@@ -53,6 +53,9 @@
 #
 
 class User < ApplicationRecord
+  devise :two_factor_authenticatable,
+         :otp_secret_encryption_key => ENV['12345']
+
   include AllyConcern
 
   OAUTH_TOKEN_URL = 'https://accounts.google.com/o/oauth2/token'
@@ -85,7 +88,7 @@ class User < ApplicationRecord
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :invitable, :database_authenticatable, :registerable, :uid, :lockable,
+  devise :invitable, :registerable, :uid, :lockable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable,
          :confirmable, omniauth_providers: %i[google_oauth2 facebook]
   # https://github.com/michaelbanfield/devise-pwned_password#disabling-in-test-environments

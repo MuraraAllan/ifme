@@ -12,6 +12,7 @@ gem 'bcrypt', '3.1.13'
 gem 'devise', '~> 4.7.1'
 gem 'devise_invitable', '~> 2.0.1'
 gem 'devise-pwned_password'
+gem 'devise-two-factor'
 gem 'devise_uid'
 gem 'pg', '1.1.4'
 gem "recaptcha"

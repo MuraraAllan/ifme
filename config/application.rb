@@ -57,6 +57,8 @@ module Ifme
     config.i18n.available_locales = Locale.available_locales.sort_by(&:swapcase).map &:to_sym
     config.i18n.default_locale = :en
 
+    Rails.application.config.filter_parameters += [:otp_attempt]
+    
     config.to_prepare do
       Devise::Mailer.layout 'mailer'
     end
